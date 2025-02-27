@@ -2,9 +2,16 @@ import Heading from "./Heading";
 import Paragraph from "./Paragraph";
 import Buttons from "./Buttons";
 import { Link } from "react-router";
-import Container from "./Container";
 
-export default function Card({ title, director, abstract, image, link }) {
+export default function Card({
+  title,
+  director,
+  abstract,
+  image,
+  genre,
+  release_year,
+  link,
+}) {
   return (
     <div className="bg-gray-100 border-1 border-gray-200 text-center rounded-xl shadow h-full mx-auto flex flex-col gap-4 items-center">
       <div className="w-1/2">
@@ -16,7 +23,9 @@ export default function Card({ title, director, abstract, image, link }) {
       </div>
       <div className="p-4 flex flex-col mt-auto">
         <Heading level={4}>{title}</Heading>
-        <Heading level={6}>{director}</Heading>
+        <Heading level={5}>{director}</Heading>
+        <Heading level={6}>Genere: {genre}</Heading>
+        <Heading level={6}>Anno: {release_year}</Heading>
         <Paragraph size="sm" className="truncate">
           {/* {abstract} */}
         </Paragraph>

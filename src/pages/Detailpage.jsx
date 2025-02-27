@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
 //import dei componenti
+import MovieDetail from "../components/UI/movieDetail";
+import Container from "../components/UI/Container";
 import StarsVote from "../components/UI/StarsVote";
 
 export default function Detailpage() {
@@ -25,8 +27,17 @@ export default function Detailpage() {
 
   useEffect(fetchMovie, [id, navigate]);
   return (
-    <div>
-      Pagina del film: {movie.title}
+    <Container>
+      <MovieDetail
+        title={movie.title}
+        abstract={movie.abstract}
+        director={movie.director}
+        image={movie.image}
+        genre={movie.genre}
+        release_year={movie.release_year}
+        link={`/movies/${movie.id}`}
+      />
+
       <div>
         {movie.reviews?.map((review, index) => (
           <div key={index}>
@@ -38,6 +49,6 @@ export default function Detailpage() {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
