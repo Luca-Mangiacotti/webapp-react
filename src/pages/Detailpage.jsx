@@ -2,6 +2,9 @@ import axios from "../api/axios";
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
+//import dei componenti
+import StarsVote from "../components/UI/StarsVote";
+
 export default function Detailpage() {
   const [movie, setMovie] = useState({});
   const { id } = useParams();
@@ -21,13 +24,18 @@ export default function Detailpage() {
   };
 
   useEffect(fetchMovie, [id, navigate]);
-  console.log(movie);
   return (
     <div>
       Pagina del film: {movie.title}
       <div>
         {movie.reviews?.map((review, index) => (
-          <div key={index}> {[review.name, review.vote, review.text]}</div>
+          <div key={index}>
+            {[review.name, review.vote, review.text]}
+            <div>
+              Voto: {StarsVote(review.vote)}
+              {console.log(review.vote)}
+            </div>
+          </div>
         ))}
       </div>
     </div>

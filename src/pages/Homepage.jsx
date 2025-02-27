@@ -19,7 +19,6 @@ export default function HomePage() {
       {movies.map((movie) => (
         <div key={movie.id}>
           {[movie.title, movie.genre, movie.director, movie.release_year]}
-          {console.log(movie)}
         </div>
       ))}
     </>
