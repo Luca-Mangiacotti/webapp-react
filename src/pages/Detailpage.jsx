@@ -1,11 +1,13 @@
 import axios from "../api/axios";
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 //import dei componenti
 import MovieDetail from "../components/UI/movieDetail";
 import Container from "../components/UI/Container";
 import StarsVote from "../components/UI/StarsVote";
+import Buttons from "../components/UI/Buttons";
 
 export default function Detailpage() {
   const [movie, setMovie] = useState({});
@@ -28,6 +30,11 @@ export default function Detailpage() {
   useEffect(fetchMovie, [id, navigate]);
   return (
     <Container>
+      <Link to="/">
+        <Buttons variant="primary" type="sm">
+          Home
+        </Buttons>
+      </Link>
       <MovieDetail
         title={movie.title}
         abstract={movie.abstract}

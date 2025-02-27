@@ -14,7 +14,7 @@ export default function MovieDetail({
 }) {
   return (
     <div className="flex gap-10 p-6 rounded-2xl">
-      <div>
+      <div className="max-w-72">
         <img className="rounded-lg" src={image} alt={title} />
       </div>
       <div className="space-y-3">
