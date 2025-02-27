@@ -21,6 +21,15 @@ export default function Detailpage() {
   };
 
   useEffect(fetchMovie, [id, navigate]);
-
-  return <div>Pagina del film: {movie.title}</div>;
+  console.log(movie);
+  return (
+    <div>
+      Pagina del film: {movie.title}
+      <div>
+        {movie.reviews.map((review, index) => (
+          <div key={index}> {[review.name, review.vote, review.text]}</div>
+        ))}
+      </div>
+    </div>
+  );
 }
