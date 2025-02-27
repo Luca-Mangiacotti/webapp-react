@@ -26,7 +26,7 @@ export default function Detailpage() {
     <div>
       Pagina del film: {movie.title}
       <div>
-        {movie.reviews.map((review, index) => (
+        {movie.reviews?.map((review, index) => (
           <div key={index}> {[review.name, review.vote, review.text]}</div>
         ))}
       </div>
