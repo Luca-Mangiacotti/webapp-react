@@ -9,7 +9,7 @@ const initialFormData = {
   vote: 0,
 };
 
-export default function FormAddReview({ fetchBook }) {
+export default function FormAddReview({ fetchMovie }) {
   const [formData, setFormData] = useState(initialFormData);
   const { id } = useParams();
 
@@ -33,7 +33,7 @@ export default function FormAddReview({ fetchBook }) {
       })
       .then(() => {
         setFormData(initialFormData);
-        fetchBook();
+        fetchMovie();
       });
   };
 
