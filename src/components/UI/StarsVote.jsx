@@ -1,19 +1,15 @@
-export default function StarsVote(vote) {
-  let starFields = [""];
-  for (let i = vote; i > 0; i--) {
-    starFields.push(<i className="fa-solid fa-star text-amber-400" />);
+export default function StarsVote({ vote }) {
+  const starIcons = [];
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= vote) {
+      // stelline piene
+      starIcons.push(<i key={i} className="fa-solid fa-star"></i>);
+    } else {
+      // stelline vuote
+      starIcons.push(<i key={i} className="fa-regular fa-star"></i>);
+    }
   }
 
-  for (let j = 5 - vote; j > 0; j--) {
-    starFields.push(<i className="fa-solid fa-star text-gray-400" />);
-  }
-
-  //   console.log(starFields);
-  return (
-    <div>
-      {starFields.map((elm, index) => (
-        <span key={index}>{elm}</span>
-      ))}
-    </div>
-  );
+  return <div className="text-amber-300">{starIcons}</div>;
 }

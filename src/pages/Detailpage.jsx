@@ -6,8 +6,10 @@ import { Link } from "react-router";
 //import dei componenti
 import MovieDetail from "../components/UI/movieDetail";
 import Container from "../components/UI/Container";
-import StarsVote from "../components/UI/StarsVote";
 import Buttons from "../components/UI/Buttons";
+import Review from "../components/UI/Review";
+import Heading from "../components/UI/Heading";
+import FormAddReview from "../components/FormAddReview";
 
 export default function Detailpage() {
   const [movie, setMovie] = useState({});
@@ -45,17 +47,22 @@ export default function Detailpage() {
         link={`/movies/${movie.id}`}
       />
 
-      <div>
-        {movie.reviews?.map((review, index) => (
-          <div key={index}>
-            {[review.name, review.vote, review.text]}
-            <div>
-              Voto: {StarsVote(review.vote)}
-              {console.log(review.vote)}
-            </div>
+      {movie.reviews?.length > 0 && (
+        <section className="mt-4 bg-white p-4 space-y-4">
+          <Heading level={2}>Recensioni</Heading>
+          <div>
+            {movie?.reviews?.map((review, index) => (
+              <div key={index} className="py-2 border-b border-neutral-200">
+                <Review review={review} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
+      )}
+      <section className="mt-4 bg-white p-4 space-y-4">
+        <Heading level={3}>Aggiungi una recensione</Heading>
+        <FormAddReview fetchMovie={fetchMovie} />
+      </section>
     </Container>
   );
 }
